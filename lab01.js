@@ -55,7 +55,7 @@ function handleNoteOff(key_number) {
      * You need to use the slider to get the lowest pitch number above
      * rather than the hardcoded value
      */
-
+    
     // Send the note off message for the pitch
     MIDI.noteOff(0, pitch); 
     let playmode = $(":radio[name=options]:checked").val();
