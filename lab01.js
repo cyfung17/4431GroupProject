@@ -27,9 +27,12 @@ function handleNoteOn(key_number) {
     console.log("pitch number "+ pitch + " !");
     // Extract the amplitude value from the slider
     let amplitude = parseInt($("#amplitude").val());
-
+    
+    let checkdrum = parseInt($("#mididrum").val());
+    if(checkdrum != 114514){
+        MIDI.noteOn(10, pitch, amplitude);}
     // Use the two numbers to start a MIDI note
-    MIDI.noteOn(0, pitch, amplitude);
+    else{MIDI.noteOn(0, pitch, amplitude);}
     let playmode = $(":radio[name=options]:checked").val();
     if(playmode == "option2"){
         MIDI.noteOn(0, pitch+4, amplitude);
@@ -51,13 +54,17 @@ function handleNoteOff(key_number) {
     //let pitch = 60 + key_number;
     let pitch = parseInt($("#pitch").val()) + key_number;
     console.log("pitch number "+ pitch + " !");
+
     /*
      * You need to use the slider to get the lowest pitch number above
      * rather than the hardcoded value
      */
-    
+    let checkdrum = parseInt($("#mididrum").val());
+    if(checkdrum != 114514){
+        MIDI.noteOff(10, pitch);}
+    // Use the two numbers to start a MIDI note
+    else{MIDI.noteOff(0, pitch);}
     // Send the note off message for the pitch
-    MIDI.noteOff(0, pitch); 
     let playmode = $(":radio[name=options]:checked").val();
     if(playmode == "option2"){
         MIDI.noteOff(0, pitch+4);
@@ -162,8 +169,13 @@ function handlePageKeyUp(evt) {
  */
 function ChangeProgram(evt){
     let insnumber =  parseInt($("#midiinstrument").val());
-    MIDI.programChange(0,insnumber);
-    console.log("instrument number "+ insnumber + " !");
+    let drumnumber = parseInt($("#mididrum").val());
+    if(drumnumber != 114514){
+        MIDI.programChange(10,drumnumber);
+        console.log("drum number "+ drumnumber + " !");}
+    else{MIDI.programChange(0,insnumber);
+        console.log("instrument number "+ insnumber + " !");}
+   
 }
 
 
