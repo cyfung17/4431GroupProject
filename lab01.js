@@ -15,6 +15,8 @@ let key_mapping = {
 
 // Signal the key is down
 let key_down_status = new Array(23);
+// Play or not play indicator
+var should_start = 0
 
 function handleNoteOn(key_number) {
     // Find the pitch
@@ -80,8 +82,22 @@ function handleNoteOff(key_number) {
      */
 
 }
+// this is the function for press the play button
 function handleDrumLoopOn(evt){
-    
+    should_start == 0
+    for (var i = 0; i < Infinity; i++) {
+     if (should_start==1){
+
+     }
+     else{
+        break;
+     }
+
+    }
+}
+// this 
+function handleDrumLoopOff(evt){
+
 }
 
 function handlePianoMouseDown(evt) {

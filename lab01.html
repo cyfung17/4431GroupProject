@@ -103,7 +103,7 @@
           <label for="instrument">Instrument:</label>
           <div class="input-group">
             <select name="instruments" class="custom-select" id="midiinstrument">
-               <option value="0"selected>Drum</option>
+               <option value="0"selected>Drum Machine</option>
                <option value="2">Electric Grand Piano</option>
                <option value="10">Music Box</option>
                <option value="40">Violin</option>
@@ -112,7 +112,7 @@
                <option value= "56">Trumpt</option>
                <option value="26">Electric Guitar(Jazz)</option>
                <option value="24">Acoustic Guitar(Nylon)</option>
-               <option value="124">Telephone Ring</option>
+               <option value="118">Synth Drum</option>
             </select>
            </div>
         </div>
@@ -129,8 +129,22 @@
             </select>
           </div>
         </div>
+        <div class="col-6">
+          <label for="pitch">BPM</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">60</span>
+            </div>
+            <div class="row flex-fill align-items-center mx-0 px-2 border rounded-left">
+              <input class="custom-range" id="BPM for Drum Machine" type="range" value="120" min="60" max="200">
+            </div>
+            <div class="input-group-append">
+              <span class="input-group-text">200</span>
+            </div>
+          </div>
+        </div>
       </div>
-
+      
       <div class="keyboard">
         <!-- First we draw the white keys -->
         <div class="white-keys">
