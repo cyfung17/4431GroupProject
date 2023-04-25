@@ -42,53 +42,7 @@
 				}
 			}
 		}
-		byCategory["Drums"] = [
-			{ id: "Acoustic Bass Drum", name: "Acoustic Bass Drum", program: 34, category: "Drums" },
-			{ id: "Bass Drum 1", name: "Bass Drum 1", program: 35, category: "Drums" },
-			{ id: "Side Stick", name: "Side Stick", program: 37, category: "Drums" },
-			{ id: "Snare Drum 1", name: "Snare Drum 1", program: 38, category: "Drums" },
-			{ id: "Hand Clap", name: "Hand Clap", program: 39, category: "Drums" },
-			{ id: "Snare Drum 2", name: "Snare Drum 2", program: 40, category: "Drums" },
-			{ id: "Low Tom 2", name: "Low Tom 2", program: 45, category: "Drums" },
-			{ id: "Closed Hi-hat", name: "Closed Hi-hat", program: 42, category: "Drums" },
-			{ id: "High Tom 2", name: "High Tom 2", program: 50, category: "Drums" },
-			{ id: "Pedal Hi-hat", name: "Pedal Hi-hat", program: 44, category: "Drums" },
-			{ id: "Mid Tom 2", name: "Mid Tom 2", program: 47, category: "Drums" },
-			{ id: "Open Hi-hat", name: "Open Hi-hat", program: 46, category: "Drums" },
-			{ id: "Crash Cymbal 1", name: "Crash Cymbal 1", program: 49, category: "Drums" },
-			{ id: "High Tom 1", name: "High Tom 1", program: 48, category: "Drums" },
-			{ id: "Ride Cymbal 1", name: "Ride Cymbal 1", program: 51, category: "Drums" },
-			{ id: "Chinese Cymbal", name: "Chinese Cymbal", program: 52, category: "Drums" },
-			{ id: "Ride Bell", name: "Ride Bell", program: 53, category: "Drums" },
-			{ id: "Tambourine", name: "Tambourine", program: 54, category: "Drums" },
-			{ id: "Splash Cymbal", name: "Splash Cymbal", program: 55, category: "Drums" },
-			{ id: "Cowbell", name: "Cowbell", program: 56, category: "Drums" },
-			{ id: "Crash Cymbal 2", name: "Crash Cymbal 2", program: 57, category: "Drums" },
-			{ id: "Vibraslap", name: "Vibraslap", program: 58, category: "Drums" },
-			{ id: "Ride Cymbal 2", name: "Ride Cymbal 2", program: 59, category: "Drums" },
-			{ id: "Hi Bongo", name: "Hi Bongo", program: 60, category: "Drums" },
-			{ id: "Low Bongo", name: "Low Bongo", program: 61, category: "Drums" },
-			{ id: "Mute Hi Conga", name: "Mute Hi Conga", program: 62, category: "Drums" },
-			{ id: "Open Hi Conga", name: "Open Hi Conga", program: 63, category: "Drums" },
-			{ id: "Low Conga", name: "Low Conga", program: 64, category: "Drums" },
-			{ id: "High Timbale", name: "High Timbale", program: 65, category: "Drums" },
-			{ id: "Low Timbale", name: "Low Timbale", program: 66, category: "Drums" },
-			{ id: "High Agogo", name: "High Agogo", program: 67, category: "Drums" },
-			{ id: "Low Agogo", name: "Low Agogo", program: 68, category: "Drums" },
-			{ id: "Cabasa", name: "Cabasa", program: 69, category: "Drums" },
-			{ id: "Maracas", name: "Maracas", program: 70, category: "Drums" },
-			{ id: "Short Whistle", name: "Short Whistle", program: 71, category: "Drums" },
-			{ id: "Long Whistle", name: "Long Whistle", program: 72, category: "Drums" },
-			{ id: "Short Guiro", name: "Short Guiro", program: 73, category: "Drums" },
-			{ id: "Long Guiro", name: "Long Guiro", program: 74, category: "Drums" },
-			{ id: "Claves", name: "Claves", program: 75, category: "Drums" },
-			{ id: "Hi Wood Block", name: "Hi Wood Block", program: 76, category: "Drums" },
-			{ id: "Low Wood Block", name: "Low Wood Block", program: 77, category: "Drums" },
-			{ id: "Mute Cuica", name: "Mute Cuica", program: 78, category: "Drums" },
-			{ id: "Open Cuica", name: "Open Cuica", program: 79, category: "Drums" },
-			{ id: "Mute Triangle", name: "Mute Triangle", program: 80, category: "Drums" },
-			{ id: "Open Triangle", name: "Open Triangle", program: 81, category: "Drums" }
-		];
+		
 		return res;
 	})({
 		'Piano': ['1 Acoustic Grand Piano', '2 Bright Acoustic Piano', '3 Electric Grand Piano', '4 Honky-tonk Piano', '5 Electric Piano 1', '6 Electric Piano 2', '7 Harpsichord', '8 Clavinet'],
@@ -105,8 +59,7 @@
 		'Synth Pad': ['89 Pad 1 (new age)', '90 Pad 2 (warm)', '91 Pad 3 (polysynth)', '92 Pad 4 (choir)', '93 Pad 5 (bowed)', '94 Pad 6 (metallic)', '95 Pad 7 (halo)', '96 Pad 8 (sweep)'],
 		'Synth Effects': ['97 FX 1 (rain)', '98 FX 2 (soundtrack)', '99 FX 3 (crystal)', '100 FX 4 (atmosphere)', '101 FX 5 (brightness)', '102 FX 6 (goblins)', '103 FX 7 (echoes)', '104 FX 8 (sci-fi)'],
 		'Ethnic': ['105 Sitar', '106 Banjo', '107 Shamisen', '108 Koto', '109 Kalimba', '110 Bagpipe', '111 Fiddle', '112 Shanai'],
-		'Percussive': ['113 Tinkle Bell', '114 Agogo', '115 Steel Drums', '116 Woodblock', '117 Taiko Drum', '118 Melodic Tom', '119 Synth Drum'],
-		'Sound effects': ['120 Reverse Cymbal', '121 Guitar Fret Noise', '122 Breath Noise', '123 Seashore', '124 Bird Tweet', '125 Telephone Ring', '126 Helicopter', '127 Applause', '128 Gunshot']
+		'Percussive': ['113 Tinkle Bell', '114 Agogo', '115 Steel Drums', '116 Woodblock', '117 Taiko Drum', '118 Melodic Tom', '119 Synth Drum']
 	});
 	
 	
@@ -127,12 +80,17 @@
 
 	/* getProgram | programChange
 	--------------------------------------------------- */
+
+
 	MIDI.getProgram = function(channelId) {
 		return getParam('program', channelId);
 	};
 
 	MIDI.programChange = function(channelId, program, delay) {
-		var spec = GM.getProgramSpec(program);
+		if(channelId==9){
+			var spec = GM.getDrumSpec(program);
+		}
+		else{var spec = GM.getProgramSpec(program);}
 		if (spec && isFinite(program = spec.program)) {
 			setParam('program', channelId, program, delay);
 		}
