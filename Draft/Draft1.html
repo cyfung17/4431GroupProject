@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+        <title>Drum Machine</title>
+        <style>
+                .drum_machine {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                }
+
+                .drow {
+                        display: flex;
+                        align-items: center;
+                        margin-bottom: 10px;
+                }
+
+                /* .label {
+                        margin-right: 10px;
+                } */
+
+                .Drum_key {
+                        display: inline-block;
+                        width: 50px;
+                        height: 50px;
+                        background-color: gray;
+                        border: 1px solid black;
+                        border-radius: 10px;
+                        margin: 5px;
+                        text-align: center;
+                        line-height: 50px;
+                        color: white;
+                }
+
+                .Drum_key.clicked {
+                        background-color: blue;
+                }
+
+                .Drum_Textbox {
+                        margin-right: 10px;
+                        padding: 5px;
+                        border: 1px solid black;
+                        border-radius: 10px;
+                }
+        </style>
+        <script>
+                function playSound(button) {
+                        if (button.classList.contains("clicked")) {
+                                button.classList.remove("clicked");
+                        } else {
+                                button.classList.add("clicked");
+                        }
+                }
+        </script>
+</head>
+
+<body>
+        <div class="drum_machine">
+                <div class="drow">
+                        <div class="Drum_Textbox">Row 1:</div>
+                        <button class="Drum_key" id="drum1-1" onclick="playSound(this)"></button>
+                        <button class="Drum_key" id="drum1-2" onclick="playSound(this)"></button>
+                        <button class="Drum_key" id="drum1-3" onclick="playSound(this)"></button>
+                        <button class="Drum_key" id="drum1-4" onclick="playSound(this)"></button>
+                        <button class="Drum_key" id="drum1-5" onclick="playSound(this)"></button>
+                        <button class="Drum_key" id="drum1-6" onclick="playSound(this)"></button>
+                        <button class="Drum_key" id="drum1-7" onclick="playSound(this)"></button>
+                        <button class="Drum_key" id="drum1-8" onclick="playSound(this)"></button>
+                </div>
+                <div class="drow">
+                        <div class="Drum_Textbox">Row 2:</div>
+                        <button class="Drum_key" id="drum2-1" onclick="playSound(this)"></button>
+                        <button class="Drum_key" id="drum2-2" onclick="playSound(this)"></button>
+                        <button class="Drum_key" id="drum2-3" onclick="playSound(this)"></button>
+                        <button class="Drum_key" id="drum2-4" onclick="playSound(this)"></button>
+                        <button class="Drum_key" id="drum2-5" onclick="playSound(this)"></button>
+                        <button class="Drum_key" id="drum2-6" onclick="playSound(this)"></button>
+                        <button class="Drum_key" id="drum2-7" onclick="playSound(this)"></button>
+                        <button class="Drum_key" id="drum2-8" onclick="playSound(this)"></button>
+                </div>
+                <div class="drow">
+                        <div class="Drum_Textbox">Row 3:</div>
+                        <button class="Drum_key" id="drum3-1" onclick="playSound(this)"></button>
+                        <button class="Drum_key" id="drum3-2" onclick="playSound(this)"></button>
+                        <button class="Drum_key" id="drum3-3" onclick="playSound(this)"></button>
+                        <button class="Drum_key" id="drum3-4" onclick="playSound(this)"></button>
+                        <button class="Drum_key" id="drum3-5" onclick="playSound(this)"></button>
+                        <button class="Drum_key" id="drum3-6" onclick="playSound(this)"></button>
+                        <button class="Drum_key" id="drum3-7" onclick="playSound(this)"></button>
+                        <button class="Drum_key" id="drum3-8" onclick="playSound(this)"></button>
+                </div>
+                <div class="drow">
+                        <div class="Drum_Textbox">Row 4:</div>
+                        <button class="Drum_key" id="drum4-1" onclick="playSound(this)"></button>
+                        <button class="Drum_key" id="drum4-2" onclick="playSound(this)"></button>
+                        <button class="Drum_key" id="drum4-3" onclick="playSound(this)"></button>
+                        <button class="Drum_key" id="drum4-4" onclick="playSound(this)"></button>
+                        <button class="Drum_key" id="drum4-5" onclick="playSound(this)"></button>
+                        <button class="Drum_key" id="drum4-6" onclick="playSound(this)"></button>
+                        <button class="Drum_key" id="drum4-7" onclick="playSound(this)"></button>
+                        <button class="Drum_key" id="drum4-8" onclick="playSound(this)"></button>
+                </div>
+        </div>
+        
+</body>
+
+</html>

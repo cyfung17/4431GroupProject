@@ -1,0 +1,10 @@
+Update log 
+
+2023/04/25
+完成：
+1.增加update log文档
+2.增加draft文件夹，用作一般测试
+3.在lab01.html增加drum machine keyboard的html css javascript的代码。单独功能现存于draft.html中
+
+计划：
+1.Pause/Start, Stop control bar

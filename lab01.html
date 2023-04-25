@@ -40,7 +40,58 @@
       .white-key { width: 40px; height: 250px; border: 1px solid gray; background: white; padding-top: 220px; }
       .black-key { margin: 0 5px; width: 30px; height: 160px; border: 1px solid black; background: black; color: white; padding-top: 130px; }
       .spacer { width: 20px; float: left; }
+
+      /* CSS code for Drum Machine keyboard */
+      .drum_machine {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                }
+
+                .drow {
+                        display: flex;
+                        align-items: center;
+                        margin-bottom: 10px;
+                }
+
+                /* .label {
+                        margin-right: 10px;
+                } */
+
+                .Drum_key {
+                        display: inline-block;
+                        width: 50px;
+                        height: 50px;
+                        background-color: black;
+                        border: 1px solid black;
+                        border-radius: 10px;
+                        margin: 5px;
+                        text-align: center;
+                        line-height: 50px;
+                        color: white;
+                }
+
+                .Drum_key.clicked {
+                        background-color: yellow;
+                }
+
+                .Drum_Textbox {
+                        margin-right: 10px;
+                        padding: 5px;
+                        border: 1px solid black;
+                        border-radius: 10px;
+                }
     </style>
+    <!--js code worked for color inversion-->
+    <script>
+      function playSound(button) {
+        if (button.classList.contains("clicked")) {
+          button.classList.remove("clicked");
+        } else {
+          button.classList.add("clicked");
+        }
+      }
+    </script>
   </head>
   <body>
     <nav class="navbar navbar-dark bg-dark navbar-fixed-top">
@@ -142,6 +193,54 @@
               <span class="input-group-text">200</span>
             </div>
           </div>
+        </div>
+      </div>
+
+<!-- Starting of the drum machine key board -->
+      <div class="drum_machine">
+        <div class="drow">
+          <div class="Drum_Textbox">Row 1:</div>
+          <button class="Drum_key" id="4411" onclick="playSound(this)"></button>
+          <button class="Drum_key" id="4412" onclick="playSound(this)"></button>
+          <button class="Drum_key" id="4413" onclick="playSound(this)"></button>
+          <button class="Drum_key" id="4414" onclick="playSound(this)"></button>
+          <button class="Drum_key" id="4415" onclick="playSound(this)"></button>
+          <button class="Drum_key" id="4416" onclick="playSound(this)"></button>
+          <button class="Drum_key" id="4417" onclick="playSound(this)"></button>
+          <button class="Drum_key" id="4418" onclick="playSound(this)"></button>
+        </div>
+        <div class="drow">
+          <div class="Drum_Textbox">Row 2:</div>
+          <button class="Drum_key" id="4421" onclick="playSound(this)"></button>
+          <button class="Drum_key" id="4422" onclick="playSound(this)"></button>
+          <button class="Drum_key" id="4423" onclick="playSound(this)"></button>
+          <button class="Drum_key" id="4424" onclick="playSound(this)"></button>
+          <button class="Drum_key" id="4425" onclick="playSound(this)"></button>
+          <button class="Drum_key" id="4426" onclick="playSound(this)"></button>
+          <button class="Drum_key" id="4427" onclick="playSound(this)"></button>
+          <button class="Drum_key" id="4428" onclick="playSound(this)"></button>
+        </div>
+        <div class="drow">
+          <div class="Drum_Textbox">Row 3:</div>
+          <button class="Drum_key" id="4431" onclick="playSound(this)"></button>
+          <button class="Drum_key" id="4432" onclick="playSound(this)"></button>
+          <button class="Drum_key" id="4433" onclick="playSound(this)"></button>
+          <button class="Drum_key" id="4434" onclick="playSound(this)"></button>
+          <button class="Drum_key" id="4435" onclick="playSound(this)"></button>
+          <button class="Drum_key" id="4436" onclick="playSound(this)"></button>
+          <button class="Drum_key" id="4437" onclick="playSound(this)"></button>
+          <button class="Drum_key" id="4438" onclick="playSound(this)"></button>
+        </div>
+        <div class="drow">
+          <div class="Drum_Textbox">Row 4:</div>
+          <button class="Drum_key" id="4441" onclick="playSound(this)"></button>
+          <button class="Drum_key" id="4442" onclick="playSound(this)"></button>
+          <button class="Drum_key" id="4443" onclick="playSound(this)"></button>
+          <button class="Drum_key" id="4444" onclick="playSound(this)"></button>
+          <button class="Drum_key" id="4445" onclick="playSound(this)"></button>
+          <button class="Drum_key" id="4446" onclick="playSound(this)"></button>
+          <button class="Drum_key" id="4447" onclick="playSound(this)"></button>
+          <button class="Drum_key" id="4448" onclick="playSound(this)"></button>
         </div>
       </div>
       
