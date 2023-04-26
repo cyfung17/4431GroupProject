@@ -1,5 +1,9 @@
 Update log 
 
+2023/04/26 2100
+1.优化Drum keyboard
+2.Created control bar
+
 2023/04/25
 完成：
 1.增加update log文档

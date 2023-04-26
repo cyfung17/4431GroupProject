@@ -43,6 +43,74 @@
                         border: 1px solid black;
                         border-radius: 10px;
                 }
+
+                .btn {
+                    display: inline-block;
+                    font-weight: 400;
+                    color: #212529;
+                    text-align: center;
+                    vertical-align: middle;
+                    -webkit-user-select: none;
+                    -moz-user-select: none;
+                    -ms-user-select: none;
+                    user-select: none;
+                    background-color: transparent;
+                    /* border: 1px solid transparent; */
+                    padding: .375rem .75rem;/*按键与字间空隙*/
+                    font-size: 1rem;/*字体大小*/
+                    line-height: 1.5;/*按键高度*/
+                    border-radius: .25rem; /*按键圆角*/
+                    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+                }
+
+                .btn-group{
+                        align-items: center;
+                        position: relative;
+                        display: inline-flex;
+                        vertical-align: middle;
+
+
+                }
+
+                .btn-success {
+                    color: #fff;
+                    background-color: #28a745;
+                    border-color: #28a745;
+                }
+
+                .btn-danger {
+                    color: #fff;
+                    background-color: #dc3545;
+                    border-color: #dc3545;
+                }
+
+                /* .fa, .fab, .fal, .far, .fas {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    display: inline-block;
+                    font-style: normal;
+                    font-variant: normal;
+                    text-rendering: auto;
+                    line-height: 1;
+                }
+                .fa, .fas {
+                    font-weight: 900;
+                }
+                .fa, .far, .fas {
+                    font-family: "Font Awesome 5 Free";
+                } */
+
+                .fa-play:before {
+                    content: "\23f5";
+                }
+
+                .fa-stop:before {
+                    content: "\23f9";
+                }
+
+                /* *, ::after, ::before {
+                    box-sizing: border-box;
+                } */
         </style>
         <script>
                 function playSound(button) {
@@ -102,7 +170,10 @@
                         <button class="Drum_key" id="drum4-8" onclick="playSound(this)"></button>
                 </div>
         </div>
-        
+        <div class="btn-group">
+                <button id="btnPlay" class="btn btn-success"><i class="fas fa-play"></i></button>
+                <button id="btnStop" class="btn btn-danger"><i class="fas fa-stop"></i></button>
+        </div>
 </body>
 
 </html>
