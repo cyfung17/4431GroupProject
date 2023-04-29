@@ -247,7 +247,7 @@
                <option value= "56">Trumpt</option>
                <option value="26">Electric Guitar(Jazz)</option>
                <option value="24">Acoustic Guitar(Nylon)</option>
-               <option value="118">Synth Drum</option>
+               <option value="118">Tabla</option>
             </select>
            </div>
         </div>
@@ -259,22 +259,22 @@
           <label for="Drum Machine">Drum Machine:</label>
           <div class="input-group">
             <select name="drum" class="custom-select" id="mididrum">
-              <option value="114514" selected>-Default-</option>
-              <option value="34">Acoustic Bass Drum</option>
+              <option value="0" selected>Default Drum</option>
+              <option value="118">Tabla</option>
             </select>
           </div>
         </div>
         <div class="col-6">
-          <label for="pitch">BPM</label>
+          <label for="BPM">BPM</label>
           <div class="input-group">
             <div class="input-group-prepend">
               <span class="input-group-text">60</span>
             </div>
             <div class="row flex-fill align-items-center mx-0 px-2 border rounded-left">
-              <input class="custom-range" id="BPM for Drum Machine" type="range" value="120" min="60" max="200">
+              <input class="custom-range" id="BPM" type="range" value="120" min="60" max="180">
             </div>
             <div class="input-group-append">
-              <span class="input-group-text">200</span>
+              <span class="input-group-text">180</span>
             </div>
           </div>
         </div>
@@ -289,48 +289,48 @@
 <!-- Starting of the drum machine key board -->
       <div class="drum_machine">
         <div class="drow">
-          <div class="Drum_Textbox">Row 1:</div>
-          <button class="Drum_key" id="4411" onclick="playSound(this)"></button>
-          <button class="Drum_key" id="4412" onclick="playSound(this)"></button>
-          <button class="Drum_key" id="4413" onclick="playSound(this)"></button>
-          <button class="Drum_key" id="4414" onclick="playSound(this)"></button>
-          <button class="Drum_key" id="4415" onclick="playSound(this)"></button>
-          <button class="Drum_key" id="4416" onclick="playSound(this)"></button>
-          <button class="Drum_key" id="4417" onclick="playSound(this)"></button>
-          <button class="Drum_key" id="4418" onclick="playSound(this)"></button>
+          <div class="Drum_Textbox">Open High Hat:</div>
+          <button class="Drum_key" id="4411" onclick="playSound(this);drum_button(0,0)"></button>
+          <button class="Drum_key" id="4412" onclick="playSound(this);drum_button(0,1)"></button>
+          <button class="Drum_key" id="4413" onclick="playSound(this);drum_button(0,2)"></button>
+          <button class="Drum_key" id="4414" onclick="playSound(this);drum_button(0,3)"></button>
+          <button class="Drum_key" id="4415" onclick="playSound(this);drum_button(0,4)"></button>
+          <button class="Drum_key" id="4416" onclick="playSound(this);drum_button(0,5)"></button>
+          <button class="Drum_key" id="4417" onclick="playSound(this);drum_button(0,6)"></button>
+          <button class="Drum_key" id="4418" onclick="playSound(this);drum_button(0,7)"></button>
         </div>
         <div class="drow">
-          <div class="Drum_Textbox">Row 2:</div>
-          <button class="Drum_key" id="4421" onclick="playSound(this)"></button>
-          <button class="Drum_key" id="4422" onclick="playSound(this)"></button>
-          <button class="Drum_key" id="4423" onclick="playSound(this)"></button>
-          <button class="Drum_key" id="4424" onclick="playSound(this)"></button>
-          <button class="Drum_key" id="4425" onclick="playSound(this)"></button>
-          <button class="Drum_key" id="4426" onclick="playSound(this)"></button>
-          <button class="Drum_key" id="4427" onclick="playSound(this)"></button>
-          <button class="Drum_key" id="4428" onclick="playSound(this)"></button>
+          <div class="Drum_Textbox">Closed High Hat:</div>
+          <button class="Drum_key" id="4421" onclick="playSound(this);drum_button(1,0)"></button>
+          <button class="Drum_key" id="4422" onclick="playSound(this);drum_button(1,1)"></button>
+          <button class="Drum_key" id="4423" onclick="playSound(this);drum_button(1,2)"></button>
+          <button class="Drum_key" id="4424" onclick="playSound(this);drum_button(1,3)"></button>
+          <button class="Drum_key" id="4425" onclick="playSound(this);drum_button(1,4)"></button>
+          <button class="Drum_key" id="4426" onclick="playSound(this);drum_button(1,5)"></button>
+          <button class="Drum_key" id="4427" onclick="playSound(this);drum_button(1,6)"></button>
+          <button class="Drum_key" id="4428" onclick="playSound(this);drum_button(1,7)"></button>
         </div>
         <div class="drow">
-          <div class="Drum_Textbox">Row 3:</div>
-          <button class="Drum_key" id="4431" onclick="playSound(this)"></button>
-          <button class="Drum_key" id="4432" onclick="playSound(this)"></button>
-          <button class="Drum_key" id="4433" onclick="playSound(this)"></button>
-          <button class="Drum_key" id="4434" onclick="playSound(this)"></button>
-          <button class="Drum_key" id="4435" onclick="playSound(this)"></button>
-          <button class="Drum_key" id="4436" onclick="playSound(this)"></button>
-          <button class="Drum_key" id="4437" onclick="playSound(this)"></button>
-          <button class="Drum_key" id="4438" onclick="playSound(this)"></button>
+          <div class="Drum_Textbox">Low Tom:</div>
+          <button class="Drum_key" id="4431" onclick="playSound(this);drum_button(2,0)"></button>
+          <button class="Drum_key" id="4432" onclick="playSound(this);drum_button(2,1)"></button>
+          <button class="Drum_key" id="4433" onclick="playSound(this);drum_button(2,2)"></button>
+          <button class="Drum_key" id="4434" onclick="playSound(this);drum_button(2,3)"></button>
+          <button class="Drum_key" id="4435" onclick="playSound(this);drum_button(2,4)"></button>
+          <button class="Drum_key" id="4436" onclick="playSound(this);drum_button(2,5)"></button>
+          <button class="Drum_key" id="4437" onclick="playSound(this);drum_button(2,6)"></button>
+          <button class="Drum_key" id="4438" onclick="playSound(this);drum_button(2,7)"></button>
         </div>
         <div class="drow">
-          <div class="Drum_Textbox">Row 4:</div>
-          <button class="Drum_key" id="4441" onclick="playSound(this)"></button>
-          <button class="Drum_key" id="4442" onclick="playSound(this)"></button>
-          <button class="Drum_key" id="4443" onclick="playSound(this)"></button>
-          <button class="Drum_key" id="4444" onclick="playSound(this)"></button>
-          <button class="Drum_key" id="4445" onclick="playSound(this)"></button>
-          <button class="Drum_key" id="4446" onclick="playSound(this)"></button>
-          <button class="Drum_key" id="4447" onclick="playSound(this)"></button>
-          <button class="Drum_key" id="4448" onclick="playSound(this)"></button>
+          <div class="Drum_Textbox">Snare:</div>
+          <button class="Drum_key" id="4441" onclick="playSound(this);drum_button(3,0)"></button>
+          <button class="Drum_key" id="4442" onclick="playSound(this);drum_button(3,1)"></button>
+          <button class="Drum_key" id="4443" onclick="playSound(this);drum_button(3,2)"></button>
+          <button class="Drum_key" id="4444" onclick="playSound(this);drum_button(3,3)"></button>
+          <button class="Drum_key" id="4445" onclick="playSound(this);drum_button(3,4)"></button>
+          <button class="Drum_key" id="4446" onclick="playSound(this);drum_button(3,5)"></button>
+          <button class="Drum_key" id="4447" onclick="playSound(this);drum_button(3,6)"></button>
+          <button class="Drum_key" id="4448" onclick="playSound(this);drum_button(3,7)"></button>
         </div>
       </div>
       

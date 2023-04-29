@@ -15,13 +15,51 @@ let key_mapping = {
 
 // Signal the key is down
 let key_down_status = new Array(23);
-// Play or not play indicator
-var should_start = 0
 
+// Play or not play indicator
+var should_start = 0;
+// Array to store the play-not play pattern
+var drum_array=[[0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0],];
+
+// once we press the button or change the pattern, the array will change
+// and drum sound will be played .
+function drum_button(x,y){
+    if (drum_array[x][y]==0){
+        drum_array[x][y]=1;
+        console.log(x,y)
+    if(x==0){
+        handleNoteOn(46);
+        handleNoteOff(46);}
+    else if(x==1){
+        handleNoteOn(42);
+        handleNoteOff(42);}
+    else if(x==2){
+        handleNoteOn(45);
+        handleNoteOff(45);
+    }
+    else { handleNoteOn(40);
+        handleNoteOff(40);}
+    ;}
+    else{drum_array[x][y]=0;
+    }}
+
+// modify for drum
 function handleNoteOn(key_number) {
     // Find the pitch
-    //let pitch = 60 + key_number;
-    let pitch = parseInt($("#pitch").val()) + key_number;
+
+    //drum case
+    if (parseInt($("#midiinstrument").val())==0){
+        // tabla only work for C4 to E6
+        if (parseInt($("#mididrum").val())==118){
+            var pitch = key_number + 20;
+        }
+        else{ var pitch = key_number; }
+    }
+    else{
+      var pitch = parseInt($("#pitch").val()) + key_number;}
     /*
      * You need to use the slider to get the lowest pitch number above
      * rather than the hardcoded value
@@ -51,7 +89,15 @@ function handleNoteOn(key_number) {
 function handleNoteOff(key_number) {
     // Find the pitch
     //let pitch = 60 + key_number;
-    let pitch = parseInt($("#pitch").val()) + key_number;
+    if (parseInt($("#midiinstrument").val())==0){
+        if (parseInt($("#mididrum").val())==118){
+            var pitch = key_number + 20;
+        }
+        else{ var pitch = key_number; }
+    }
+    else{
+      var pitch = parseInt($("#pitch").val()) + key_number;}
+    /*
     console.log("pitch number "+ pitch + " !");
 
     /*
@@ -82,21 +128,49 @@ function handleNoteOff(key_number) {
      */
 
 }
+/*function handleDrumNote(key,OnOff){
+    MIDI.noteOn(0, key, OnOff*amplitude);
+    MIDI.noteOff(0,key);
+
+}*/
 // this is the function for press the play button
-function handleDrumLoopOn(evt){
-    should_start == 0
-    for (var i = 0; i < Infinity; i++) {
-     if (should_start==1){
-
+function handleDrumLoopOn(){
+    console.log("yes")
+    should_start=1;
+    var bpm = 60/(parseInt($("#BPM").val()));
+    console.log("bpm is"+ bpm);
+    for (let i = 0; i < 300000; i++) {
+        const timeoutId = setTimeout(function() {
+            if (should_start==0){
+              return;
+            }  
+            if(drum_array[0][i%8]==1){
+            handleNoteOn(46);
+            handleNoteOff(46);
+            }
+            if(drum_array[1][i%8]==1){
+            handleNoteOn(42);
+            handleNoteOff(42);}
+            if(drum_array[2][i%8]==1){
+            handleNoteOn(45);
+            handleNoteOff(45);}
+        
+            if(drum_array[3][i%8]==1){
+            handleNoteOn(40);
+            handleNoteOff(40);}
+        
+        
+         },i*1000*bpm)
+         
+        
+       
      }
-     else{
-        break;
-     }
 
-    }
+    
 }
 // this 
-function handleDrumLoopOff(evt){
+function handleDrumLoopOff(){
+    should_start=0;
 
 }
 
@@ -104,7 +178,10 @@ function handlePianoMouseDown(evt) {
     // Determine which piano key has been clicked on
     // evt.target tells us which item triggered this function
     // The piano key number is extracted from the key id (0-23)
+    if(parseInt($("#midiinstrument").val())==0) return;
     let key_number = $(evt.target).attr("id").substring(4);
+    //console.log(key_number)
+    if(!Number.isInteger(key_number)) return;
     key_number = parseInt(key_number);
 
     // Start the note
@@ -141,8 +218,9 @@ function handlePianoMouseUp(evt) {
 function handlePageKeyDown(evt) {
     // Exit the function if the key is not a piano key
     // evt.key tells us the key that has been pressed
+    //console.log(evt.key);
     if (!(evt.key in key_mapping)) return;
-    
+    //console.log(evt.key+"test");
     // Find the key number of the key that has been pressed
     let key_number = key_mapping[evt.key];
     if (key_down_status[key_number]) return;
@@ -188,8 +266,14 @@ function handlePageKeyUp(evt) {
 function ChangeProgram(evt){
 
     let insnumber =  parseInt($("#midiinstrument").val());
+    if (insnumber==0){
+        let drum_number = parseInt($("#mididrum").val());
+        MIDI.programChange(0,drum_number);
+    }
    
-    MIDI.programChange(0,insnumber);
+    else{
+        MIDI.programChange(0,insnumber);
+    }
     console.log("instrument number "+insnumber + " !");
    
 }
@@ -239,6 +323,8 @@ $(document).ready(function() {
             $(document).keydown(handlePageKeyDown);
             $(document).keyup(handlePageKeyUp);
             addEventListener("input", ChangeProgram);
+            $("#btnPlay").on("click", function() { handleDrumLoopOn() ; });
+            $("#btnStop").on("click", function() { handleDrumLoopOff(); });
 
             /*
              * You need to set up the event for the instrument 
