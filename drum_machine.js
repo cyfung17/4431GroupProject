@@ -19,10 +19,14 @@ let key_down_status = new Array(23);
 // Play or not play indicator
 var should_start = 0;
 // Array to store the play-not play pattern
-var drum_array=[[0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0],];
+var drum_array=[[0,0,0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0,0,0],];
 
 // once we press the button or change the pattern, the array will change
 // and drum sound will be played .
@@ -31,25 +35,51 @@ function drum_button(x,y){
         drum_array[x][y]=1;
         console.log(x,y)
     if(x==0){
-        handleNoteOn(46);
-        handleNoteOff(46);}
+        var drum_1 = parseInt($("#drum_ins1").val());
+        console.log(drum_1);
+        handleNoteOn(drum_1);
+        handleNoteOff(drum_1);}
     else if(x==1){
-        handleNoteOn(42);
-        handleNoteOff(42);}
-    else if(x==2){
-        handleNoteOn(45);
-        handleNoteOff(45);
-    }
-    else { handleNoteOn(40);
-        handleNoteOff(40);}
-    ;}
+        var drum_2=parseInt($("#drum_ins2").val());
+        handleNoteOn(drum_2);
+        handleNoteOff(drum_2);}
+    else if (x == 2) {
+        var drum_3 = parseInt($("#drum_ins3").val());
+        console.log(drum_3);
+        handleNoteOn(drum_3);
+        handleNoteOff(drum_3);
+          }
+    else if (x == 3) {
+        var drum_4 = parseInt($("#drum_ins4").val());
+        handleNoteOn(drum_4);
+        handleNoteOff(drum_4);
+          } 
+    else if (x == 4) {
+            var drum_5 = parseInt($("#drum_ins5").val());
+            handleNoteOn(drum_5);
+            handleNoteOff(drum_5);
+          } 
+    else if (x == 5) {
+            var drum_6 = parseInt($("#drum_ins6").val());
+            handleNoteOn(drum_6);
+            handleNoteOff(drum_6);
+          } 
+    else if (x == 6) {
+            var drum_7 = parseInt($("#drum_ins7").val());
+            handleNoteOn(drum_7);
+            handleNoteOff(drum_7);
+          } 
+    else if (x == 7) {
+            var drum_8 = parseInt($("#drum_ins8").val());
+            handleNoteOn(drum_8);
+            handleNoteOff(drum_8);}}
     else{drum_array[x][y]=0;
     }}
 
 // modify for drum
 function handleNoteOn(key_number) {
     // Find the pitch
-
+    let amplitude = parseInt($("#amplitude").val());
     //drum case
     if (parseInt($("#midiinstrument").val())==0){
         // tabla only work for C4 to E6
@@ -66,7 +96,7 @@ function handleNoteOn(key_number) {
      */
     console.log("pitch number "+ pitch + " !");
     // Extract the amplitude value from the slider
-    let amplitude = parseInt($("#amplitude").val());
+   
   
     // Use the two numbers to start a MIDI note
     MIDI.noteOn(0, pitch, amplitude);
@@ -128,52 +158,64 @@ function handleNoteOff(key_number) {
      */
 
 }
-function handleDrumNote(position){
-    if(drum_array[0][position%8]==1){
-        handleNoteOn(46);
-        handleNoteOff(46);
-        }
-        if(drum_array[1][position%8]==1){
-        handleNoteOn(42);
-        handleNoteOff(42);}
-        if(drum_array[2][position%8]==1){
-        handleNoteOn(45);
-        handleNoteOff(45);}
-    
-        if(drum_array[3][position%8]==1){
-        handleNoteOn(40);
-        handleNoteOff(40);} 
+
+// delay function
+const sleep = (time)=>{
+    return new Promise(resolve => setTimeout(resolve, time))
 
 }
 // this is the function for press the play button
-function handleDrumLoopOn(){
+async function handleDrumLoopOn(){
     console.log("yes")
     should_start=1;
-    var bpm = 60/(parseInt($("#BPM").val()));
+    var bpm = (parseInt($("#BPM").val()));
+    var realBpm;
     console.log("bpm is"+ bpm);
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < Infinity; i++) {
         if(should_start==0) break; 
-        const timeoutId = setTimeout(function loop() {
-            
-            if (should_start==0){
-             console.log(i+"inside");
-              return;              
-            }  
-            if(drum_array[0][i%8]==1){
-            handleNoteOn(46);
-            handleNoteOff(46);
+        else   
+            realBpm = 60/(parseInt($("#BPM").val()));
+            console.log("real bpm is"+ realBpm);
+            if(drum_array[0][i%12]==1){
+            var d1 = parseInt($("#drum_ins1").val())
+            handleNoteOn(d1);
+            handleNoteOff(d2);
             }
-            if(drum_array[1][i%8]==1){
-            handleNoteOn(42);
-            handleNoteOff(42);}
-            if(drum_array[2][i%8]==1){
-            handleNoteOn(45);
-            handleNoteOff(45);}
-        
-            if(drum_array[3][i%8]==1){
-            handleNoteOn(40);
-            handleNoteOff(40);} 
-         },i*1000*bpm)
+            if(drum_array[1][i%12]==1){
+            var d2 = parseInt($("#drum_ins2").val())
+            handleNoteOn(d2);
+            handleNoteOff(d2);}
+            if (drum_array[2][i % 12] == 1) {
+                var d3 = parseInt($("#drum_ins3").val());
+                handleNoteOn(d3);
+                handleNoteOff(d3);
+              }
+              if (drum_array[3][i % 12] == 1) {
+                var d4 = parseInt($("#drum_ins4").val());
+                handleNoteOn(d4);
+                handleNoteOff(d4);
+              }
+              if (drum_array[4][i % 12] == 1) {
+                var d5 = parseInt($("#drum_ins5").val());
+                handleNoteOn(d5);
+                handleNoteOff(d5);
+              }
+              if (drum_array[5][i % 12] == 1) {
+                var d6 = parseInt($("#drum_ins6").val());
+                handleNoteOn(d6);
+                handleNoteOff(d6);
+              }
+              if (drum_array[6][i % 12] == 1) {
+                var d7 = parseInt($("#drum_ins7").val());
+                handleNoteOn(d7);
+                handleNoteOff(d7);
+              }
+              if (drum_array[7][i % 12] == 1) {
+                var d8 = parseInt($("#drum_ins8").val());
+                handleNoteOn(d8);
+                handleNoteOff(d8);
+              }
+            await sleep(realBpm*250);
         
         
      }
@@ -190,8 +232,9 @@ function handlePianoMouseDown(evt) {
     // The piano key number is extracted from the key id (0-23)
     if(parseInt($("#midiinstrument").val())==0) return;
     let key_number = $(evt.target).attr("id").substring(4);
-    //console.log(key_number)
-    if(!Number.isInteger(key_number)) return;
+    console.log(key_number);
+    //if(!Number.isInteger(key_number)) return;
+    console.log(key_number);
     key_number = parseInt(key_number);
 
     // Start the note
@@ -228,9 +271,9 @@ function handlePianoMouseUp(evt) {
 function handlePageKeyDown(evt) {
     // Exit the function if the key is not a piano key
     // evt.key tells us the key that has been pressed
-    //console.log(evt.key);
+    console.log(evt.key);
     if (!(evt.key in key_mapping)) return;
-    //console.log(evt.key+"test");
+    console.log(evt.key+"test");
     // Find the key number of the key that has been pressed
     let key_number = key_mapping[evt.key];
     if (key_down_status[key_number]) return;
@@ -292,14 +335,26 @@ function ChangeProgram(evt){
 function changeKeyboard() {
     var division1 = document.getElementById("DrumMachine");
     var division2 = document.getElementById("KeyBoard");
+    var division3 = document.getElementById("PitchControl1");
+    var division4 = document.getElementById("PitchControl");
+    var division5 = document.getElementById("PlayMode");
+    var division6 = document.getElementById("PlayMode1");
     var selectBox = document.getElementById("midiinstrument");
     console.log("Disappear!!!!");
     if (selectBox.value == "0") {
         division1.style.display = "block";
         division2.style.display = "none";
+        division3.style.display = "none";
+        division4.style.display = "none";
+        division5.style.display = "none";
+        division6.style.display = "none";
     } else {
         division1.style.display = "none";
         division2.style.display = "block";
+        division3.style.display = "block";
+        division4.style.display = "block";
+        division5.style.display = "block";
+        division6.style.display = "block";
     }
 }
 
