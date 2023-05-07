@@ -32,7 +32,7 @@
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
       }
-      .container { min-width: 800px; width: 650px; margin-top: 10px; display: none; }
+      .container { min-width: 800px; width: 800px; margin-top: 10px; display: none; }
       .keyboard { float: left; position: relative; width: 562px; height: 252px; border: 1px solid lightgray; background: lightgray; }
       .white-keys, .black-keys { position: absolute; -webkit-user-select: none; -ms-user-select: none; user-select: none; }
       .white-key, .black-key { float: left; border-radius: 4px; }
@@ -60,13 +60,13 @@
 
                 .Drum_key {
                          display: inline-block;
-                         background-color: black;
+                         background-color: rgb(69, 66, 66);
                          border: none;
-                         border-radius: 10px;
-                         width: 30px;
-                         height: 30px;
+                         border-radius: 5px;
+                         width: 35px;
+                         height: 35px;
                          position: relative;
-                         margin: 5px;
+                         margin: 3px;
 
                         /* display: inline-block;
                         width: 50px;
@@ -87,8 +87,8 @@
                         top: 50%;
                         left: 50%;
                         transform: translate(-50%, -50%);
-                        background-color: yellow;
-                        border-radius: 5px;
+                        background-color: rgb(206, 141, 9);
+                        border-radius: 3px;
                         width: 20px;
                         height: 20px;
                 }
@@ -106,10 +106,35 @@
                         height: 50px;
                         text-align: center;
                 }
+                .Indicater {
+                         display: inline-block;
+                         background-color: rgba(69, 66, 66, 0);
+                         border: none;
+                         border-radius: 5px;
+                         width: 35px;
+                         height: 35px;
+                         position: relative;
+                         margin: 3px;}
+                .Indicater.clicked::after {
+                     display: block;
+                 }
+                .Indicater::after {
+                        content: "";
+                        display: none;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        background-color: rgba(186, 9, 206, 0.215);
+                        border-radius: 5px;
+                        width: 20px;
+                        height: 20px;
+                }
+
           /* Controls css */
                 .btn {
-                  /* width: 50px;
-                  height: 50px; */
+                    width: 60px;
+                    height: 50px;
                     display: inline-block;
                     font-weight: 400;
                     color: #212529;
@@ -133,7 +158,10 @@
                         position: relative;
                         display: inline-flex;
                         vertical-align: middle;
+                        margin: 0 auto;
                 }
+                .btn-group button {
+                text-align: center;}
 
                 .btn-success {
                     color: #fff;
@@ -145,6 +173,11 @@
                     color: #fff;
                     background-color: #dc3545;
                     border-color: #dc3545;
+                }
+                .btn-res {
+                    color: #fff;
+                    background-color: #f5a209;
+                    border-color: #f5a209;
                 }
 
                 .fa, .fab, .fal, .far, .fas {
@@ -170,6 +203,58 @@
                 .fa-stop:before {
                     content: "\23f9";
                 }
+                .fa-res:before {
+                    content: "\27F2";
+                }
+                .fa-1:before {
+                    content: "1";
+                }
+                .fa-2:before {
+                    content: "2";
+                }
+                .fa-3:before {
+                    content: "3";
+                }
+                .fa-4:before {
+                    content: "4";
+                }
+                .fa-5:before {
+                    content: "5";
+                }
+                .fa-6:before {
+                    content: "6";
+                }
+                .fa-7:before {
+                    content: "7";
+                }
+                .fa-8:before {
+                    content: "8";
+                }
+                .fa-9:before {
+                    content: "9";
+                }
+                .fa-10:before {
+                    content: "10";
+                }
+                .fa-11:before {
+                    content: "11";
+                }
+                .fa-12:before {
+                    content: "12";
+                }
+                .fa-13:before {
+                    content: "13";
+                }
+                .fa-14:before {
+                    content: "14";
+                }
+                .fa-15:before {
+                    content: "15";
+                }
+                .fa-16:before {
+                    content: "16";
+                }
+ 
     </style>
     <!--js code worked for color inversion-->
     <script>
@@ -228,11 +313,25 @@
         </div>
       </div>
       <div class="row mb-4">
-        <div class="col-6">
-          <label for="pitch" id="PitchControl1">MIDI Lowest Pitch:</label>
-          <div class="input-group" id="PitchControl">
+        <div class="col-6" id="PlayMode">
+          <div class="playmode">Play Mode:</div>
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-info active">
+              <input type="radio" name="options" value="option1" checked> Single Note
+            </label>
+            <label class="btn btn-info">
+              <input type="radio" name="options" value="option2"> Major  Chord
+            </label>
+            <label class="btn btn-info">
+              <input type="radio" name="options" value="option3"> Minor  Chord
+            </label>
+          </div>
+        </div>
+        <div class="col-6" id="PitchControl">
+          <label for="pitch">MIDI Lowest Pitch:</label>
+          <div class="input-group">
             <div class="input-group-prepend">
-              <span class="input-group-text" >21</span>
+              <span class="input-group-text">21</span>
             </div>
             <div class="row flex-fill align-items-center mx-0 px-2 border rounded-left">
               <input class="custom-range" id="pitch" type="range" value="60" min="21" max="85">
@@ -240,20 +339,6 @@
             <div class="input-group-append">
                 <span class="input-group-text">85</span>
             </div>
-          </div>
-        </div>
-        <div class="col-6">
-          <div class="playmode" id="PlayMode">Play Mode:</div>
-          <div class="btn-group btn-group-toggle" data-toggle="buttons" id="PlayMode1">
-            <label class="btn btn-info active">
-              <input type="radio" name="options" value="option1" checked> Single Note
-            </label>
-            <label class="btn btn-info">
-              <input type="radio" name="options" value="option2"> Major Chord
-            </label>
-            <label class="btn btn-info">
-              <input type="radio" name="options" value="option3"> Minor Chord
-            </label>
           </div>
         </div>
       </div>
@@ -286,9 +371,12 @@
       </div>
     
 <!--Controls -->
-      <div class="btn-group">
+      <div class="row mb-3">
+       <div class="btn-group">
         <button id="btnPlay" class="btn btn-success"><i class="fas fa-play"></i></button>
         <button id="btnStop" class="btn btn-danger"><i class="fas fa-stop"></i></button>
+        <button id="btnStop" class="btn btn-res" onclick="resetDrums()"><i class="fas fa-res"></i></button>
+       </div>
       </div>
 
 <!-- Starting of the drum machine key board -->
@@ -356,6 +444,11 @@
           <button class="Drum_key" id="44110" onclick="playSound(this);drum_button(0,9)"></button>
           <button class="Drum_key" id="44111" onclick="playSound(this);drum_button(0,10)"></button>
           <button class="Drum_key" id="44112" onclick="playSound(this);drum_button(0,11)"></button>
+          <button class="Drum_key" id="44113" onclick="playSound(this);drum_button(0,12)"></button>
+          <button class="Drum_key" id="44114" onclick="playSound(this);drum_button(0,13)"></button>
+          <button class="Drum_key" id="44115" onclick="playSound(this);drum_button(0,14)"></button>
+          <button class="Drum_key" id="44116" onclick="playSound(this);drum_button(0,15)"></button>
+
         </div>
         <div class="drow">
           <select name="drum" class="drum_ins" id="drum_ins2">
@@ -420,6 +513,10 @@
           <button class="Drum_key" id="4428" onclick="playSound(this);drum_button(1,9)"></button>
           <button class="Drum_key" id="4428" onclick="playSound(this);drum_button(1,10)"></button>
           <button class="Drum_key" id="4428" onclick="playSound(this);drum_button(1,11)"></button>
+          <button class="Drum_key" id="44113" onclick="playSound(this);drum_button(1,12)"></button>
+          <button class="Drum_key" id="44114" onclick="playSound(this);drum_button(1,13)"></button>
+          <button class="Drum_key" id="44115" onclick="playSound(this);drum_button(1,14)"></button>
+          <button class="Drum_key" id="44116" onclick="playSound(this);drum_button(1,15)"></button>
         </div>
         <div class="drow">
           <select name="drum" class="drum_ins" id="drum_ins3">
@@ -484,6 +581,10 @@
           <button class="Drum_key" id="4438" onclick="playSound(this);drum_button(2,9)"></button>
           <button class="Drum_key" id="4438" onclick="playSound(this);drum_button(2,10)"></button>
           <button class="Drum_key" id="4438" onclick="playSound(this);drum_button(2,11)"></button>
+          <button class="Drum_key" id="44113" onclick="playSound(this);drum_button(2,12)"></button>
+          <button class="Drum_key" id="44114" onclick="playSound(this);drum_button(2,13)"></button>
+          <button class="Drum_key" id="44115" onclick="playSound(this);drum_button(2,14)"></button>
+          <button class="Drum_key" id="44116" onclick="playSound(this);drum_button(2,15)"></button>
         </div>
         <div class="drow">
           <select name="drum" class="drum_ins" id="drum_ins4">
@@ -548,6 +649,10 @@
           <button class="Drum_key" id="4448" onclick="playSound(this);drum_button(3,9)"></button>
           <button class="Drum_key" id="4448" onclick="playSound(this);drum_button(3,10)"></button>
           <button class="Drum_key" id="4448" onclick="playSound(this);drum_button(3,11)"></button>
+          <button class="Drum_key" id="44113" onclick="playSound(this);drum_button(3,12)"></button>
+          <button class="Drum_key" id="44114" onclick="playSound(this);drum_button(3,13)"></button>
+          <button class="Drum_key" id="44115" onclick="playSound(this);drum_button(3,14)"></button>
+          <button class="Drum_key" id="44116" onclick="playSound(this);drum_button(3,15)"></button>
         </div>
         <div class="drow">
           <select name="drum" class="drum_ins" id="drum_ins5">
@@ -612,6 +717,11 @@
           <button class="Drum_key" id="4446" onclick="playSound(this);drum_button(4,9)"></button>
           <button class="Drum_key" id="4447" onclick="playSound(this);drum_button(4,10)"></button>
           <button class="Drum_key" id="4448" onclick="playSound(this);drum_button(4,11)"></button>
+          <button class="Drum_key" id="44113" onclick="playSound(this);drum_button(4,12)"></button>
+          <button class="Drum_key" id="44114" onclick="playSound(this);drum_button(4,13)"></button>
+          <button class="Drum_key" id="44115" onclick="playSound(this);drum_button(4,14)"></button>
+          <button class="Drum_key" id="44116" onclick="playSound(this);drum_button(4,15)"></button>
+
         </div>
         <div class="drow">
           <select name="drum" class="drum_ins" id="drum_ins6">
@@ -676,6 +786,10 @@
           <button class="Drum_key" id="4446" onclick="playSound(this);drum_button(5,9)"></button>
           <button class="Drum_key" id="4447" onclick="playSound(this);drum_button(5,10)"></button>
           <button class="Drum_key" id="4448" onclick="playSound(this);drum_button(5,11)"></button>
+          <button class="Drum_key" id="44113" onclick="playSound(this);drum_button(5,12)"></button>
+          <button class="Drum_key" id="44114" onclick="playSound(this);drum_button(5,13)"></button>
+          <button class="Drum_key" id="44115" onclick="playSound(this);drum_button(5,14)"></button>
+          <button class="Drum_key" id="44116" onclick="playSound(this);drum_button(5,15)"></button>
         </div>
         <div class="drow">
           <select name="drum" class="drum_ins" id="drum_ins7">
@@ -740,6 +854,10 @@
           <button class="Drum_key" id="4446" onclick="playSound(this);drum_button(6,9)"></button>
           <button class="Drum_key" id="4447" onclick="playSound(this);drum_button(6,10)"></button>
           <button class="Drum_key" id="4448" onclick="playSound(this);drum_button(6,11)"></button>
+          <button class="Drum_key" id="44113" onclick="playSound(this);drum_button(6,12)"></button>
+          <button class="Drum_key" id="44114" onclick="playSound(this);drum_button(6,13)"></button>
+          <button class="Drum_key" id="44115" onclick="playSound(this);drum_button(6,14)"></button>
+          <button class="Drum_key" id="44116" onclick="playSound(this);drum_button(6,15)"></button>
         </div>
         <div class="drow">
           <select name="drum" class="drum_ins" id="drum_ins8">
@@ -804,6 +922,29 @@
           <button class="Drum_key" id="4446" onclick="playSound(this);drum_button(7,9)"></button>
           <button class="Drum_key" id="4447" onclick="playSound(this);drum_button(7,10)"></button>
           <button class="Drum_key" id="4448" onclick="playSound(this);drum_button(7,11)"></button>
+          <button class="Drum_key" id="44113" onclick="playSound(this);drum_button(7,12)"></button>
+          <button class="Drum_key" id="44114" onclick="playSound(this);drum_button(7,13)"></button>
+          <button class="Drum_key" id="44115" onclick="playSound(this);drum_button(7,14)"></button>
+          <button class="Drum_key" id="44116" onclick="playSound(this);drum_button(7,15)"></button>
+        </div>
+        <div class="drow">
+          <text>Progress Indicater</text>
+          <button class="Indicater" id="i1" onclick="playSound(this)"><i class="fas fa-1"></i></button>
+          <button class="Indicater" id="i2" onclick="playSound(this)"><i class="fas fa-2"></i></button>
+          <button class="Indicater" id="i3" onclick="playSound(this)"><i class="fas fa-3"></i></button>
+          <button class="Indicater" id="i4" onclick="playSound(this)"><i class="fas fa-4"></i></button>
+          <button class="Indicater" id="i5" onclick="playSound(this)"><i class="fas fa-5"></i></button>
+          <button class="Indicater" id="i6" onclick="playSound(this)"><i class="fas fa-6"></i></button>
+          <button class="Indicater" id="i7" onclick="playSound(this)"><i class="fas fa-7"></i></button>
+          <button class="Indicater" id="i8" onclick="playSound(this)"><i class="fas fa-8"></i></button>
+          <button class="Indicater" id="i9" onclick="playSound(this)"><i class="fas fa-9"></i></button>
+          <button class="Indicater" id="i10" onclick="playSound(this)"><i class="fas fa-10"></i></button>
+          <button class="Indicater" id="i11" onclick="playSound(this)"><i class="fas fa-11"></i></button>
+          <button class="Indicater" id="i12" onclick="playSound(this)"><i class="fas fa-12"></i></button>
+          <button class="Indicater" id="i13" onclick="playSound(this)"><i class="fas fa-13"></i></button>
+          <button class="Indicater" id="i14" onclick="playSound(this)"><i class="fas fa-14"></i></button>
+          <button class="Indicater" id="i15" onclick="playSound(this)"><i class="fas fa-15"></i></button>
+          <button class="Indicater" id="i16" onclick="playSound(this)"><i class="fas fa-16"></i></button>
         </div>
       </div>
       

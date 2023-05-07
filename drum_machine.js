@@ -19,14 +19,14 @@ let key_down_status = new Array(23);
 // Play or not play indicator
 var should_start = 0;
 // Array to store the play-not play pattern
-var drum_array=[[0,0,0,0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0,0,0,0],];
+var drum_array=[[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],];
 
 // once we press the button or change the pattern, the array will change
 // and drum sound will be played .
@@ -170,52 +170,57 @@ async function handleDrumLoopOn(){
     should_start=1;
     var bpm = (parseInt($("#BPM").val()));
     var realBpm;
+    var Indicaters = document.getElementsByClassName("Indicater");
+    
     console.log("bpm is"+ bpm);
     for (let i = 0; i < Infinity; i++) {
         if(should_start==0) break; 
-        else   
+        else 
             realBpm = 60/(parseInt($("#BPM").val()));
             console.log("real bpm is"+ realBpm);
-            if(drum_array[0][i%12]==1){
+            if(drum_array[0][i%16]==1){
             var d1 = parseInt($("#drum_ins1").val())
             handleNoteOn(d1);
             handleNoteOff(d2);
             }
-            if(drum_array[1][i%12]==1){
+            Indicaters[i%16].classList.add("clicked");
+            if(drum_array[1][i%16]==1){
             var d2 = parseInt($("#drum_ins2").val())
             handleNoteOn(d2);
             handleNoteOff(d2);}
-            if (drum_array[2][i % 12] == 1) {
+            if (drum_array[2][i % 16] == 1) {
                 var d3 = parseInt($("#drum_ins3").val());
                 handleNoteOn(d3);
                 handleNoteOff(d3);
               }
-              if (drum_array[3][i % 12] == 1) {
+              if (drum_array[3][i % 16] == 1) {
                 var d4 = parseInt($("#drum_ins4").val());
                 handleNoteOn(d4);
                 handleNoteOff(d4);
               }
-              if (drum_array[4][i % 12] == 1) {
+              if (drum_array[4][i % 16] == 1) {
                 var d5 = parseInt($("#drum_ins5").val());
                 handleNoteOn(d5);
                 handleNoteOff(d5);
               }
-              if (drum_array[5][i % 12] == 1) {
+              if (drum_array[5][i % 16] == 1) {
                 var d6 = parseInt($("#drum_ins6").val());
                 handleNoteOn(d6);
                 handleNoteOff(d6);
               }
-              if (drum_array[6][i % 12] == 1) {
+              if (drum_array[6][i % 16] == 1) {
                 var d7 = parseInt($("#drum_ins7").val());
                 handleNoteOn(d7);
                 handleNoteOff(d7);
               }
-              if (drum_array[7][i % 12] == 1) {
+              if (drum_array[7][i % 16] == 1) {
                 var d8 = parseInt($("#drum_ins8").val());
                 handleNoteOn(d8);
                 handleNoteOff(d8);
               }
+            
             await sleep(realBpm*250);
+            Indicaters[i%16].classList.remove("clicked");
         
         
      }
@@ -330,31 +335,44 @@ function ChangeProgram(evt){
     console.log("instrument number "+insnumber + " !");
    
 }
+function resetDrums() {
+    // get all the drum keys by class name
+    let drumKeys = document.getElementsByClassName("Drum_key");
+    // loop through them and remove the clicked class
+    for (let i = 0; i < drumKeys.length; i++) {
+      drumKeys[i].classList.remove("clicked");
+    }
+    handleDrumLoopOff();
+    drum_array=[[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],];
+
+}
 
 
 function changeKeyboard() {
     var division1 = document.getElementById("DrumMachine");
     var division2 = document.getElementById("KeyBoard");
-    var division3 = document.getElementById("PitchControl1");
     var division4 = document.getElementById("PitchControl");
     var division5 = document.getElementById("PlayMode");
-    var division6 = document.getElementById("PlayMode1");
     var selectBox = document.getElementById("midiinstrument");
     console.log("Disappear!!!!");
     if (selectBox.value == "0") {
         division1.style.display = "block";
         division2.style.display = "none";
-        division3.style.display = "none";
         division4.style.display = "none";
         division5.style.display = "none";
-        division6.style.display = "none";
+
     } else {
         division1.style.display = "none";
         division2.style.display = "block";
-        division3.style.display = "block";
         division4.style.display = "block";
         division5.style.display = "block";
-        division6.style.display = "block";
     }
 }
 
