@@ -2,45 +2,30 @@
 <html>
 
 <head>
-    <title>Clickable Button</title>
-    <style>
-        .button {
-            display: inline-block;
-            background-color: black;
-            border: none;
-            border-radius: 10px;
-            width: 50px;
-            height: 50px;
-            position: relative;
-        }
-
-        .button::after {
-            content: "";
-            display: none;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: yellow;
-            border-radius: 5px;
-            width: 20px;
-            height: 20px;
-        }
-
-        .button.clicked::after {
-            display: block;
-        }
-    </style>
+    <title>Toggle Example</title>
     <script>
-        function toggleButton() {
-            var button = document.getElementById("myButton");
-            button.classList.toggle("clicked");
+        function toggleDivisions() {
+            var division1 = document.getElementById("division-1");
+            var division2 = document.getElementById("division-2");
+            if (division1.style.display === "none") {
+                division1.style.display = "block";
+                division2.style.display = "none";
+            } else {
+                division1.style.display = "none";
+                division2.style.display = "block";
+            }
         }
     </script>
 </head>
 
 <body>
-    <button id="myButton" class="button" onclick="toggleButton()"></button>
+    <div id="division-1">
+        <button>Button 1</button>
+    </div>
+    <div id="division-2">
+        <button>Button 2</button>
+    </div>
+    <button onclick="toggleDivisions()">Toggle Divisions</button>
 </body>
 
 </html>
