@@ -32,7 +32,7 @@
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
       }
-      .container { min-width: 590px; width: 590px; margin-top: 10px; display: none; }
+      .container { min-width: 590px; width: 650px; margin-top: 10px; display: none; }
       .keyboard { float: left; position: relative; width: 562px; height: 252px; border: 1px solid lightgray; background: lightgray; }
       .white-keys, .black-keys { position: absolute; -webkit-user-select: none; -ms-user-select: none; user-select: none; }
       .white-key, .black-key { float: left; border-radius: 4px; }
@@ -102,9 +102,14 @@
                         padding: 5px;
                         border: 1px solid black;
                         border-radius: 10px;
+                        width: 130px;
+                        height: 50px;
+                        text-align: center;
                 }
           /* Controls css */
                 .btn {
+                  /* width: 50px;
+                  height: 50px; */
                     display: inline-block;
                     font-weight: 400;
                     color: #212529;
@@ -237,7 +242,7 @@
         <div class="col-6">
           <label for="instrument">Instrument:</label>
           <div class="input-group">
-            <select name="instruments" class="custom-select" id="midiinstrument">
+            <select name="instruments" class="custom-select" id="midiinstrument" onchange="changeKeyboard()">
                <option value="0"selected>Drum Machine</option>
                <option value="2">Electric Grand Piano</option>
                <option value="10">Music Box</option>
@@ -287,9 +292,9 @@
       </div>
 
 <!-- Starting of the drum machine key board -->
-      <div class="drum_machine">
+      <div class="drum_machine" id = "DrumMachine">
         <div class="drow">
-          <div class="Drum_Textbox">Open High Hat:</div>
+          <div class="Drum_Textbox">Open High Hat</div>
           <button class="Drum_key" id="4411" onclick="playSound(this);drum_button(0,0)"></button>
           <button class="Drum_key" id="4412" onclick="playSound(this);drum_button(0,1)"></button>
           <button class="Drum_key" id="4413" onclick="playSound(this);drum_button(0,2)"></button>
@@ -300,7 +305,7 @@
           <button class="Drum_key" id="4418" onclick="playSound(this);drum_button(0,7)"></button>
         </div>
         <div class="drow">
-          <div class="Drum_Textbox">Closed High Hat:</div>
+          <div class="Drum_Textbox">Closed High Hat</div>
           <button class="Drum_key" id="4421" onclick="playSound(this);drum_button(1,0)"></button>
           <button class="Drum_key" id="4422" onclick="playSound(this);drum_button(1,1)"></button>
           <button class="Drum_key" id="4423" onclick="playSound(this);drum_button(1,2)"></button>
@@ -311,7 +316,7 @@
           <button class="Drum_key" id="4428" onclick="playSound(this);drum_button(1,7)"></button>
         </div>
         <div class="drow">
-          <div class="Drum_Textbox">Low Tom:</div>
+          <div class="Drum_Textbox">Low Tom</div>
           <button class="Drum_key" id="4431" onclick="playSound(this);drum_button(2,0)"></button>
           <button class="Drum_key" id="4432" onclick="playSound(this);drum_button(2,1)"></button>
           <button class="Drum_key" id="4433" onclick="playSound(this);drum_button(2,2)"></button>
@@ -322,7 +327,7 @@
           <button class="Drum_key" id="4438" onclick="playSound(this);drum_button(2,7)"></button>
         </div>
         <div class="drow">
-          <div class="Drum_Textbox">Snare:</div>
+          <div class="Drum_Textbox">Snare</div>
           <button class="Drum_key" id="4441" onclick="playSound(this);drum_button(3,0)"></button>
           <button class="Drum_key" id="4442" onclick="playSound(this);drum_button(3,1)"></button>
           <button class="Drum_key" id="4443" onclick="playSound(this);drum_button(3,2)"></button>
@@ -334,7 +339,7 @@
         </div>
       </div>
       
-      <div class="keyboard">
+      <div class="keyboard" id = "KeyBoard">
         <!-- First we draw the white keys -->
         <div class="white-keys">
           <button type="button" class="white-key" id="key-0">z</button>

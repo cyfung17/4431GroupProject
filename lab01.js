@@ -289,6 +289,21 @@ function ChangeProgram(evt){
 }
 
 
+function changeKeyboard() {
+    var division1 = document.getElementById("DrumMachine");
+    var division2 = document.getElementById("KeyBoard");
+    var selectBox = document.getElementById("midiinstrument");
+    console.log("Disappear!!!!");
+    if (selectBox.value == "0") {
+        division1.style.display = "block";
+        division2.style.display = "none";
+    } else {
+        division1.style.display = "none";
+        division2.style.display = "block";
+    }
+}
+
+
 $(document).ready(function() {
     MIDI.loadPlugin({
         soundfontUrl: "./midi-js/soundfont/",
@@ -339,7 +354,7 @@ $(document).ready(function() {
             /*
              * You need to set up the event for the instrument 
              */
-
+            changeKeyboard();
         }
     });
 });
