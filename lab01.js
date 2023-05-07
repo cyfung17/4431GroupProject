@@ -128,21 +128,36 @@ function handleNoteOff(key_number) {
      */
 
 }
-/*function handleDrumNote(key,OnOff){
-    MIDI.noteOn(0, key, OnOff*amplitude);
-    MIDI.noteOff(0,key);
+function handleDrumNote(position){
+    if(drum_array[0][position%8]==1){
+        handleNoteOn(46);
+        handleNoteOff(46);
+        }
+        if(drum_array[1][position%8]==1){
+        handleNoteOn(42);
+        handleNoteOff(42);}
+        if(drum_array[2][position%8]==1){
+        handleNoteOn(45);
+        handleNoteOff(45);}
+    
+        if(drum_array[3][position%8]==1){
+        handleNoteOn(40);
+        handleNoteOff(40);} 
 
-}*/
+}
 // this is the function for press the play button
 function handleDrumLoopOn(){
     console.log("yes")
     should_start=1;
     var bpm = 60/(parseInt($("#BPM").val()));
     console.log("bpm is"+ bpm);
-    for (let i = 0; i < 300000; i++) {
-        const timeoutId = setTimeout(function() {
+    for (let i = 0; i < 30; i++) {
+        if(should_start==0) break; 
+        const timeoutId = setTimeout(function loop() {
+            
             if (should_start==0){
-              return;
+             console.log(i+"inside");
+              return;              
             }  
             if(drum_array[0][i%8]==1){
             handleNoteOn(46);
@@ -157,21 +172,16 @@ function handleDrumLoopOn(){
         
             if(drum_array[3][i%8]==1){
             handleNoteOn(40);
-            handleNoteOff(40);}
-        
-        
+            handleNoteOff(40);} 
          },i*1000*bpm)
-         
         
-       
+        
      }
-
     
 }
 // this 
 function handleDrumLoopOff(){
     should_start=0;
-
 }
 
 function handlePianoMouseDown(evt) {
