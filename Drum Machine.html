@@ -281,7 +281,7 @@
       <!-- Here are the controls -->
       <div class="row mb-2">
         <div class="col-6">
-          <label for="amplitude">MIDI Amplitude:</label>
+          <label for="amplitude">MIDI Amplitude (Some Instruments Only):</label>
           <div class="input-group">
             <div class="input-group-prepend">
               <span class="input-group-text">0</span>
@@ -358,10 +358,10 @@
           <label for="BPM">BPM (4 Notes 1 Beat)</label>
           <div class="input-group">
             <div class="input-group-prepend">
-              <span class="input-group-text">60</span>
+              <span class="input-group-text">40</span>
             </div>
             <div class="row flex-fill align-items-center mx-0 px-2 border rounded-left">
-              <input class="custom-range" id="BPM" type="range" value="80" min="60" max="180">
+              <input class="custom-range" id="BPM" type="range" value="120" min="40" max="180">
             </div>
             <div class="input-group-append">
               <span class="input-group-text">180</span>
@@ -377,6 +377,7 @@
             <select name="preset" class="custom-select" id="preset" onchange="preset()">
               <option value="0" selected>No Preset</option>
               <option value="1">Let's Rock!!!</option>
+              <option value="2">You Know What It Is</option>
             </select>
           </div>
         </div>

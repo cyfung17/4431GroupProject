@@ -33,10 +33,10 @@ var drum_array=[[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 function drum_button(x,y){
     if (drum_array[x][y]==0){
         drum_array[x][y]=1;
-        console.log(x,y)
+        //console.log(x,y)
     if(x==0){
         var drum_1 = parseInt($("#drum_ins1").val());
-        console.log(drum_1);
+        //console.log(drum_1);
         handleNoteOn(drum_1);
         handleNoteOff(drum_1);}
     else if(x==1){
@@ -45,7 +45,7 @@ function drum_button(x,y){
         handleNoteOff(drum_2);}
     else if (x == 2) {
         var drum_3 = parseInt($("#drum_ins3").val());
-        console.log(drum_3);
+        //console.log(drum_3);
         handleNoteOn(drum_3);
         handleNoteOff(drum_3);
           }
@@ -79,7 +79,7 @@ function drum_button(x,y){
 // modify for drum
 function handleNoteOn(key_number) {
     // Find the pitch
-    let amplitude = parseInt($("#amplitude").val());
+    var amplitude = parseInt($("#amplitude").val());
     //drum case
     if (parseInt($("#midiinstrument").val())==0){
         // tabla only work for C4 to E6
@@ -94,8 +94,8 @@ function handleNoteOn(key_number) {
      * You need to use the slider to get the lowest pitch number above
      * rather than the hardcoded value
      */
-    console.log("amp is "+amplitude);
-    console.log("pitch number "+ pitch + " !");
+    //console.log("amp is "+amplitude);
+    //console.log("pitch number "+ pitch + " !");
     // Extract the amplitude value from the slider
    
   
@@ -166,18 +166,18 @@ const sleep = (time)=>{
 }
 // this is the function for press the play button
 async function handleDrumLoopOn(){
-    console.log("yes")
+    //console.log("yes")
     should_start=1;
     var bpm = (parseInt($("#BPM").val()));
     var realBpm;
     var Indicaters = document.getElementsByClassName("Indicater");
     
-    console.log("bpm is"+ bpm);
+    //console.log("bpm is"+ bpm);
     for (let i = 0; i < Infinity; i++) {
         if(should_start==0) break; 
         else 
             realBpm = 60/(parseInt($("#BPM").val()));
-            console.log("real bpm is"+ realBpm);
+            //console.log("real bpm is"+ realBpm);
             if(drum_array[0][i%16]==1){
             var d1 = parseInt($("#drum_ins1").val())
             handleNoteOn(d1);
@@ -237,9 +237,9 @@ function handlePianoMouseDown(evt) {
     // The piano key number is extracted from the key id (0-23)
     if(parseInt($("#midiinstrument").val())==0) return;
     let key_number = $(evt.target).attr("id").substring(4);
-    console.log(key_number);
+    //console.log(key_number);
     //if(!Number.isInteger(key_number)) return;
-    console.log(key_number);
+    //console.log(key_number);
     key_number = parseInt(key_number);
 
     // Start the note
@@ -249,7 +249,7 @@ function handlePianoMouseDown(evt) {
     $("#key-" + key_number).focus();
 
     // Show a simple message in the console
-    console.log("Piano mouse down event for key " + key_number + "!");
+    //console.log("Piano mouse down event for key " + key_number + "!");
 
     // Remember the key number
     last_mouse_key_number = key_number;
@@ -276,9 +276,9 @@ function handlePianoMouseUp(evt) {
 function handlePageKeyDown(evt) {
     // Exit the function if the key is not a piano key
     // evt.key tells us the key that has been pressed
-    console.log(evt.key);
+   // console.log(evt.key);
     if (!(evt.key in key_mapping)) return;
-    console.log(evt.key+"test");
+    //console.log(evt.key+"test");
     // Find the key number of the key that has been pressed
     let key_number = key_mapping[evt.key];
     if (key_down_status[key_number]) return;
@@ -354,10 +354,13 @@ function resetDrums() {
 
 }
 function preset(){
+    resetDrums();
     let drumKeys = document.getElementsByClassName("Drum_key");
     var p = parseInt($("#preset").val())
-    console.log("preset is " + p);
+    //ole.log("preset is " + p);
     if(p==1){
+        var input = document.getElementById("BPM");
+        input.value = 80;
         drumKeys[81].classList.add("clicked");
         drumKeys[82].classList.add("clicked");
         drumKeys[84].classList.add("clicked");
@@ -380,8 +383,32 @@ function preset(){
                     [0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
                     [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
                     [1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0],];
-    }else{
-        resetDrums();
+    
+    }
+    if(p==2){ 
+    var input = document.getElementById("BPM");
+    input.value = 85;
+    drumKeys[0].classList.add("clicked");
+    drumKeys[112].classList.add("clicked");
+    drumKeys[66].classList.add("clicked");
+    drumKeys[115].classList.add("clicked");
+    drumKeys[100].classList.add("clicked");
+    drumKeys[70].classList.add("clicked");
+    drumKeys[118].classList.add("clicked");
+    drumKeys[88].classList.add("clicked");
+    drumKeys[90].classList.add("clicked");
+    drumKeys[92].classList.add("clicked");
+    drumKeys[108].classList.add("clicked");
+    drumKeys[122].classList.add("clicked");
+    drum_array=[
+[1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+[0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,1,0,1,0,1,0,0,0],
+[0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0],
+[1,0,0,1,0,0,1,0,0,0,1,0,0,0,0,0],];
     }
 }
 
