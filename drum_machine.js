@@ -37,42 +37,34 @@ function drum_button(x,y){
     if(x==0){
         var drum_1 = parseInt($("#drum_ins1").val());
         //console.log(drum_1);
-        handleNoteOn(drum_1);
-        handleNoteOff(drum_1);}
+        handleNoteOn(drum_1);}
     else if(x==1){
         var drum_2=parseInt($("#drum_ins2").val());
-        handleNoteOn(drum_2);
-        handleNoteOff(drum_2);}
+        handleNoteOn(drum_2);}
     else if (x == 2) {
         var drum_3 = parseInt($("#drum_ins3").val());
         //console.log(drum_3);
         handleNoteOn(drum_3);
-        handleNoteOff(drum_3);
           }
     else if (x == 3) {
         var drum_4 = parseInt($("#drum_ins4").val());
         handleNoteOn(drum_4);
-        handleNoteOff(drum_4);
           } 
     else if (x == 4) {
             var drum_5 = parseInt($("#drum_ins5").val());
             handleNoteOn(drum_5);
-            handleNoteOff(drum_5);
           } 
     else if (x == 5) {
             var drum_6 = parseInt($("#drum_ins6").val());
             handleNoteOn(drum_6);
-            handleNoteOff(drum_6);
           } 
     else if (x == 6) {
             var drum_7 = parseInt($("#drum_ins7").val());
             handleNoteOn(drum_7);
-            handleNoteOff(drum_7);
           } 
     else if (x == 7) {
             var drum_8 = parseInt($("#drum_ins8").val());
-            handleNoteOn(drum_8);
-            handleNoteOff(drum_8);}}
+            handleNoteOn(drum_8);}}
     else{drum_array[x][y]=0;
     }}
 
@@ -180,43 +172,32 @@ async function handleDrumLoopOn(){
             //console.log("real bpm is"+ realBpm);
             if(drum_array[0][i%16]==1){
             var d1 = parseInt($("#drum_ins1").val())
-            handleNoteOn(d1);
-            handleNoteOff(d2);
-            }
+            handleNoteOn(d1);}
             Indicaters[i%16].classList.add("clicked");
             if(drum_array[1][i%16]==1){
             var d2 = parseInt($("#drum_ins2").val())
-            handleNoteOn(d2);
-            handleNoteOff(d2);}
+            handleNoteOn(d2);}
             if (drum_array[2][i % 16] == 1) {
-                var d3 = parseInt($("#drum_ins3").val());
-                handleNoteOn(d3);
-                handleNoteOff(d3);
-              }
+            var d3 = parseInt($("#drum_ins3").val());
+            handleNoteOn(d3);}
               if (drum_array[3][i % 16] == 1) {
                 var d4 = parseInt($("#drum_ins4").val());
-                handleNoteOn(d4);
-                handleNoteOff(d4);
-              }
+                handleNoteOn(d4);}
               if (drum_array[4][i % 16] == 1) {
                 var d5 = parseInt($("#drum_ins5").val());
                 handleNoteOn(d5);
-                handleNoteOff(d5);
               }
               if (drum_array[5][i % 16] == 1) {
                 var d6 = parseInt($("#drum_ins6").val());
                 handleNoteOn(d6);
-                handleNoteOff(d6);
               }
               if (drum_array[6][i % 16] == 1) {
                 var d7 = parseInt($("#drum_ins7").val());
                 handleNoteOn(d7);
-                handleNoteOff(d7);
               }
               if (drum_array[7][i % 16] == 1) {
                 var d8 = parseInt($("#drum_ins8").val());
                 handleNoteOn(d8);
-                handleNoteOff(d8);
               }
             
             await sleep(realBpm*250);
