@@ -94,6 +94,7 @@ function handleNoteOn(key_number) {
      * You need to use the slider to get the lowest pitch number above
      * rather than the hardcoded value
      */
+    console.log("amp is "+amplitude);
     console.log("pitch number "+ pitch + " !");
     // Extract the amplitude value from the slider
    
@@ -162,7 +163,6 @@ function handleNoteOff(key_number) {
 // delay function
 const sleep = (time)=>{
     return new Promise(resolve => setTimeout(resolve, time))
-
 }
 // this is the function for press the play button
 async function handleDrumLoopOn(){
@@ -352,6 +352,14 @@ function resetDrums() {
 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],];
 
+}
+function preset(){
+    let drumKeys = document.getElementsByClassName("Drum_key");
+    var p = parseInt($("#preset").val())
+    console.log("preset is " + p);
+    if(p==1){
+        drumKeys[1].classList.add("clicked");
+    }
 }
 
 

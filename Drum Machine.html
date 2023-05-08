@@ -133,8 +133,8 @@
 
           /* Controls css */
                 .btn {
-                    width: 60px;
-                    height: 50px;
+                    width: 50px;
+                    height: 40px;
                     display: inline-block;
                     font-weight: 400;
                     color: #212529;
@@ -372,11 +372,19 @@
     
 <!--Controls -->
       <div class="row mb-3">
-       <div class="btn-group">
-        <button id="btnPlay" class="btn btn-success"><i class="fas fa-play"></i></button>
-        <button id="btnStop" class="btn btn-danger"><i class="fas fa-stop"></i></button>
-        <button id="btnStop" class="btn btn-res" onclick="resetDrums()"><i class="fas fa-res"></i></button>
-       </div>
+        <div class="col-3">
+          <div class="input-group">
+            <select name="preset" class="custom-select" id="preset" onchange="preset()">
+              <option value="0" selected>No Preset</option>
+              <option value="1">Let's Rock!!!</option>
+            </select>
+          </div>
+        </div>
+        <div class="btn-group">
+         <button id="btnPlay" class="btn btn-success"><i class="fas fa-play"></i></button>
+         <button id="btnStop" class="btn btn-danger"><i class="fas fa-stop"></i></button>
+         <button id="btnStop" class="btn btn-res" onclick="resetDrums()"><i class="fas fa-res"></i></button>
+        </div>
       </div>
 
 <!-- Starting of the drum machine key board -->
