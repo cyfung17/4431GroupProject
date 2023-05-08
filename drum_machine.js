@@ -358,7 +358,30 @@ function preset(){
     var p = parseInt($("#preset").val())
     console.log("preset is " + p);
     if(p==1){
-        drumKeys[1].classList.add("clicked");
+        drumKeys[81].classList.add("clicked");
+        drumKeys[82].classList.add("clicked");
+        drumKeys[84].classList.add("clicked");
+        drumKeys[86].classList.add("clicked");
+        drumKeys[88].classList.add("clicked");
+        drumKeys[90].classList.add("clicked");
+        drumKeys[92].classList.add("clicked");
+        drumKeys[94].classList.add("clicked");
+        drumKeys[100].classList.add("clicked");
+        drumKeys[108].classList.add("clicked");
+        drumKeys[112].classList.add("clicked");
+        drumKeys[114].classList.add("clicked");
+        drumKeys[118].classList.add("clicked");
+        drumKeys[121].classList.add("clicked");
+        drum_array = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    [0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
+                    [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+                    [1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0],];
+    }else{
+        resetDrums();
     }
 }
 
