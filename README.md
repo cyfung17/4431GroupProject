@@ -1,2 +1,2 @@
 # 4431GroupProject
-here is a test
+This is a drum machine on web that base on MIDI.js
